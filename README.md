@@ -4,8 +4,9 @@
 
 **Using OSINT and Generative AI**
 
-*Does personality predict who falls for a targeted phishing attack,*
-*and what changes when the attack is written for them?*
+*An investigation into whether personality traits predict susceptibility to*
+*personalised phishing attacks, and into the effect of adapting an attack to*
+*the individual receiving it.*
 
 <br/>
 
@@ -22,81 +23,87 @@
 
 ---
 
-A research platform that measures whether a person's personality predicts how
-they respond to a targeted phishing attempt, and builds the tooling needed to
-test that at scale, so the finding can be turned into defence rather than left
-as intuition.
+A research platform developed to establish whether an individual's personality
+predicts their response to a targeted phishing attempt, and to provide the
+instrumentation required to examine that question under controlled conditions,
+such that any resulting finding may be translated into defensive practice.
 
-> This repository is the public write-up. The implementation is private; see
+> This repository constitutes the public documentation of the project. The
+> implementation is not publicly available; see
 > [Why the source is private](#-why-the-source-is-private).
 
 ---
 
 ## 📌 The problem
 
-Phishing remains among the most prevalent and reliably successful categories
-of cybercrime, reaching private individuals, companies and public institutions
-without distinction. Worldwide annual losses are estimated in the trillions of
-dollars, and the harm extends well past the balance sheet: stolen proprietary
-work, exposure of records that were meant to stay confidential, interrupted
-operations, and the slow erosion of institutional credibility that follows a
-publicised breach.
+Phishing constitutes one of the most prevalent and consistently effective
+forms of cybercrime, affecting private individuals, commercial organisations
+and public institutions alike. Estimates place worldwide annual losses in the
+order of trillions of dollars. The resulting harm is not exclusively
+financial: successful attacks may additionally produce the appropriation of
+proprietary material, the disclosure of confidential records, the interruption
+of operations, and a decline in institutional credibility.
 
-What has changed is precision. Indiscriminate bulk mailings have given way to
-messages composed for one recipient, or for a narrowly drawn group. Their
-potency comes from context. Using open-source intelligence, an attacker
-assembles a picture of a target from material that is freely available, then
-writes an approach that fits what that person values, worries about, or
-happens to be dealing with that week. The message does not have to be
-universally plausible. It only has to be plausible to one reader.
+Attack methodology has shifted substantially. Indiscriminate mass campaigns
+have been progressively displaced by spear-phishing, in which messages are
+composed for a specific individual or for a narrowly defined group. The
+effectiveness of this approach derives from its use of contextual information.
+Open-source intelligence techniques permit an attacker to assemble a profile
+of the intended recipient from freely accessible material, and to construct an
+approach aligned with that individual's apparent convictions, interests and
+immediate circumstances.
 
-Generative AI has sharpened this considerably. Models now produce fluent,
-situationally aware prose on demand, stripping away the awkward phrasing and
-visible errors that users were taught to treat as warning signs. Tailoring
-that previously cost an attacker real effort per target can be produced
-automatically and in volume, lifting both the reach and the hit rate of a
-campaign while defences remain calibrated against an earlier, cruder form of
-the attack.
+Developments in generative AI have intensified this capability. Contemporary
+language models generate fluent and contextually appropriate text on demand,
+thereby removing the irregular phrasing and conspicuous errors that users have
+conventionally been trained to recognise as indicators of fraud.
+Personalisation that formerly required substantial manual effort for each
+target may now be produced automatically and at scale, increasing both the
+reach and the success rate of campaigns, while existing defences remain
+calibrated against an earlier and less refined form of attack.
 
-Those defences are not holding. Recent evaluations of awareness and training
-programmes report limited effect, and the reason is structural rather than
-incidental: such programmes issue the same general guidance to everyone and
-treat each recipient as interchangeable, leaving untouched the human
-characteristics that determine why one person acts on a message and the next
-deletes it. The distance between how precisely attacks are now aimed and how
-uniformly countermeasures are delivered is among the weakest points in
-current security education.
+Current countermeasures demonstrate limited effectiveness. Recent evaluations
+of awareness and training interventions report modest results, attributable
+less to implementation than to design: such programmes typically issue uniform
+guidance to all recipients and treat the population as homogeneous, thereby
+neglecting the individual characteristics that determine why one recipient
+acts upon a fraudulent message while another disregards it. The disparity
+between the precision of contemporary attacks and the uniformity of the
+countermeasures deployed against them represents a substantial weakness in
+present-day security education.
 
-Personality is one of those characteristics, and its association with
-susceptibility is established in the literature set out below. Yet almost no
-working system carries personality into the construction of the simulations
-used for training. The dimension the research identifies as relevant is
-precisely the one practical tools leave out.
+Personality is among the characteristics in question, and its association with
+phishing susceptibility has been established in the literature summarised
+below. Few operational systems, however, incorporate personality into the
+construction of the simulations employed for training purposes. The dimension
+that research identifies as relevant consequently remains largely unexploited
+in practice.
 
-This project asks a sharper, testable version of the question:
+The present project addresses a narrower and empirically testable formulation
+of the question:
 
-> **Does a person's personality profile predict how they respond to a
-> spear-phishing attempt, and does tailoring the pretext to that profile
-> change the outcome?**
+> **Does an individual's personality profile predict their response to a
+> spear-phishing attempt, and does adapting the pretext to that profile alter
+> the outcome?**
 
-Specifically, it studies the correlation between demographic variables,
-Big Five personality traits (NEO PI-R), trait self-control, and observed
-behaviour under a controlled phishing simulation.
+The study accordingly examines the correlation between demographic variables,
+Big Five personality traits as measured by the NEO PI-R, trait self-control,
+and observed behaviour under controlled phishing simulation.
 
-The answer cuts both ways, which shapes how the work is handled. If
-personality measurably predicts susceptibility, training that ignores it is
-spending the same effort on everyone regardless of exposure. But the
-personalisation that makes such training effective is the same
-personalisation that makes an attack effective, which is why the generation
-side of this project is held closely rather than published.
+The implications are bidirectional, and they govern how the work is conducted.
+Should personality prove a reliable predictor of susceptibility, training that
+disregards it allocates equivalent effort to recipients of markedly unequal
+exposure. The same personalisation that would render such training effective
+would, however, equally render an attack effective. The generative component
+of this project is restricted accordingly.
 
 ---
 
 ## 📚 Research lineage
 
-This is not a standalone project. It continues an established line of research
-into the relationship between phishing susceptibility and personality,
-published in peer-reviewed journals and presented at conferences in the field.
+The project continues an established line of research into the relationship
+between phishing susceptibility and personality, published in peer-reviewed
+journals and presented at conferences in the field.
 
 **López-Aguilar, P., Urruela, C., Batista, E., Machin, J., & Solanas, A.
 (2025).** Phishing vulnerability and personality traits: Insights from a
@@ -113,22 +120,24 @@ attacks based on personality traits: The role of neuroticism. *2021 IEEE 45th
 Annual Computers, Software, and Applications Conference (COMPSAC)*.
 [![DOI](https://img.shields.io/badge/DOI-10.1109%2FCOMPSAC51774.2021.00192-004E89?style=flat-square)](https://doi.org/10.1109/COMPSAC51774.2021.00192)
 
-López-Aguilar and Solanas (2021) found no well-established psychological theory
-accounting for the role of neuroticism in phishing, and no unanimity across the
-literature, attributing the disagreement largely to non-representative samples
-and a lack of homogeneity between studies. López-Aguilar et al. (2022) applied
-the same systematic treatment to extraversion. López-Aguilar et al. (2025)
-synthesised the field more broadly, reporting extraversion, agreeableness and
-neuroticism as positively associated with vulnerability, with
-conscientiousness acting as a protective factor.
+López-Aguilar and Solanas (2021) reported the absence of a well-established
+psychological theory accounting for the role of neuroticism in phishing
+contexts, together with a lack of consensus across the literature, which the
+authors attributed principally to non-representative samples and to
+insufficient homogeneity between studies. López-Aguilar et al. (2022) applied
+comparable systematic treatment to extraversion. López-Aguilar et al. (2025)
+synthesised the field more broadly, reporting positive associations between
+vulnerability and extraversion, agreeableness and neuroticism, with
+conscientiousness functioning as a protective factor.
 
-What none of that can do, by the nature of a systematic review, is test the
-mechanism directly or measure what happens when a pretext is deliberately
-tailored to a profile. The reviews establish association and expose exactly
-why the field disagrees: inconsistent samples and incomparable study designs.
-This platform is built to answer the same question under conditions the
-reviews identified as missing, moving it from reviewed association to
-controlled, instrumented experiment.
+Systematic review, by its nature, cannot test the underlying mechanism
+directly, nor can it measure the effect of deliberately adapting a pretext to
+a given profile. The reviews establish association and identify the
+methodological sources of disagreement within the field, namely inconsistent
+samples and incomparable study designs. The present platform is constructed to
+address the same question under the conditions those reviews identify as
+absent, advancing it from documented association to controlled experimental
+measurement.
 
 ---
 
@@ -162,72 +171,73 @@ flowchart LR
   R --> AN
 ```
 
-The two phases never meet except at the analysis step. That separation is the
-design, not an implementation detail.
+The two phases intersect only at the analysis stage. This separation is a
+deliberate property of the design.
 
 ---
 
 ## ⚙️ The three components
 
-Each solves a different part of the measurement problem.
+Each component addresses a distinct element of the measurement problem.
 
 <br/>
 
 ### 🧩 Personality assessment framework
 
-> **Can a psychometric profile be collected and scored reliably at study
-> scale?**
+> **May a psychometric profile be obtained and scored reliably at the scale
+> required by the study?**
 
-A reusable pipeline covering the full lifecycle of a psychometric instrument:
-ingesting survey responses, cleaning and validating them, scoring, and
-generating individual reports. Two instruments are implemented:
+The framework implements the complete lifecycle of a psychometric instrument:
+ingestion of survey responses, cleaning and validation, scoring, and
+generation of individual reports. Two instruments are currently implemented.
 
 | Instrument | Measures |
 |---|---|
 | **NEO PI-R** (Costa & McCrae, 1992) | the Big Five across 30 facets |
 | **Self-Control Scale** (Tangney et al., 2004) | a 36-item trait measure |
 
-Participants receive their own profile back confidentially; the instrument is
-administered independently of the behavioural phase.
+Participants receive their individual profile confidentially. Administration
+is independent of the behavioural phase.
 
 <br/>
 
 ### 🔤 Personality inference from text
 
-> **Can personality be inferred from written language alone?**
+> **May personality be inferred from written language alone?**
 
-If a full psychometric instrument is required for every subject, the method
-does not scale beyond a study, and an attacker certainly is not sending
-questionnaires. This module trains models to predict NEO PI-R facet scores
-**directly from written language**, testing whether natural text carries
-enough signal to approximate a profile. It is both a research question in its
-own right and the component that determines whether the broader threat model
-is realistic.
+A requirement for full psychometric assessment of every subject imposes a
+constraint that does not extend beyond the research setting, and to which an
+attacker is not subject. This module trains models to predict NEO PI-R facet
+scores directly from written language, in order to determine whether natural
+text carries sufficient signal to approximate a profile. The question is of
+independent research interest and additionally determines the realism of the
+broader threat model.
 
-A parallel line of work asks whether self-regulation capacity can be predicted
-from personality facets alone, using NEO PI-R scores as features.
+A parallel line of enquiry examines whether self-regulation capacity may be
+predicted from personality facets alone, using NEO PI-R scores as features.
 
 <br/>
 
 ### 🎯 OSINT-informed pretext generation
 
-> **Does a pretext written for the person change the outcome?**
+> **Does a pretext adapted to the individual alter the outcome?**
 
-The behavioural phase requires a lure that is credible to a specific person.
-This component combines a participant's personality profile with
-OSINT-derived personal and professional context to generate a tailored
-simulation message. Safety constraints are built into the generation step
-itself: output is framed as training material and must contain no active
-links, no attachments, and no request for sensitive data, so a generated
-message remains a simulation independently of how the delivery platform is
-configured.
+The behavioural phase requires a pretext credible to a specific recipient.
+This component combines a participant's personality profile with contextual
+information derived through open-source intelligence in order to generate a
+tailored simulation message. Safety constraints are embedded within the
+generation step itself: output is framed as training material and must contain
+no active links, no attachments and no request for sensitive data, with the
+consequence that a generated message remains a simulation irrespective of how
+the delivery platform is subsequently configured.
 
-The **[prompt template](prompt_template.md)** is published here for
-reproducibility. It is the part of the method that can be examined and
-critiqued without handing over a working capability: what gets asked for, and
-the constraints the request is bounded by. What is not published is everything
-around it, namely the OSINT collection, the binding of a profile to a prompt,
-and the campaign orchestration.
+The **[prompt template](prompt_template.md)** is published here for purposes
+of reproducibility. It represents the element of the method that may be
+examined and evaluated without distribution of an operational capability,
+specifying what is requested of the model and the constraints within which the
+request is bounded. The surrounding apparatus is not published: open-source
+intelligence collection, the binding of profile to prompt, and campaign
+orchestration.
 
 ➡️ **[Read the prompt template](prompt_template.md)**
 
@@ -235,51 +245,52 @@ and the campaign orchestration.
 
 ## 🧪 Study design
 
-Two deliberately independent phases, so that no single dataset links a
-person's personality profile to their phishing outcome outside the research
-pipeline.
+The design comprises two independent phases, structured such that no single
+dataset associates an individual's personality profile with their phishing
+outcome outside the research pipeline.
 
 | | Phase 1 - self-report | Phase 2 - behavioural |
 |---|---|---|
-| **What** | NEO PI-R + self-control instrument | Personalised phishing simulation |
+| **Instrument** | NEO PI-R and self-control measure | Personalised phishing simulation |
 | **Delivery** | Online questionnaire | Phishing-simulation platform |
-| **Disclosure** | Generic study aims only | Deception disclosed after participation ends |
+| **Disclosure** | Generic study aims only | Deception disclosed upon conclusion of participation |
 | **Output** | Individual personality profile | One behavioural record per participant, per message |
 
-The simulation platform is configured to record **that** a submission
-occurred, not **what** was submitted, yielding a susceptibility measure
-without the study ever holding a participant credential.
+The simulation platform is configured to record that a submission occurred
+rather than its content, yielding a measure of susceptibility without the
+study retaining participant credentials at any stage.
 
-> **Ethics.** Favourable assessment from the university ethics committee
-> preceded any data collection. Consent is collected once, up front, covering
-> both phases. All collection is telematic; there is no in-person stage.
-> Disclosing the phishing component in advance would have destroyed the
-> measurement, which is why the post-participation debrief, rather than an
-> upfront warning, is the mechanism that keeps the design both valid and
-> ethical.
+> **Ethics.** A favourable assessment was obtained from the university ethics
+> committee prior to any data collection. Consent is obtained once, in
+> advance, and covers both phases. All collection is conducted telematically;
+> no in-person stage is involved. Advance disclosure of the phishing component
+> would have invalidated the measurement, and post-participation debriefing
+> therefore constitutes the mechanism by which the design remains both
+> methodologically valid and ethically sound.
 
 ---
 
 ## 🔒 Why the source is private
 
-- The pipeline around the prompt is, by construction, a working method for
-  turning a personality profile plus public information about a person into a
-  convincing targeted pretext. The prompt design is published so the method
-  can be reviewed; the automated collection and orchestration that make it
-  operational are not, because describing a method is research and shipping
-  it is distribution.
-- Phase 2 records behaviour under a deception participants did not consent to
-  in advance. Nothing derived from it can be public, regardless of consent
-  obtained afterwards.
-- Keeping the two phases' data and tooling separated, including from public
-  view, is part of what makes the validity argument hold, not a precaution
-  added on top of it.
+- The apparatus surrounding the prompt constitutes, by construction, an
+  operational method for converting a personality profile and publicly
+  available information into a persuasive targeted pretext. The prompt design
+  is published so that the method may be subject to review; the automated
+  collection and orchestration that render it operational are not, the
+  distinction between documenting a method and distributing it being material.
+- Phase 2 records behaviour under a deception to which participants did not
+  consent in advance. No derivative of that data may be made public,
+  irrespective of consent obtained subsequently.
+- Maintaining separation between the data and tooling of the two phases,
+  including from public view, forms part of the validity argument rather than
+  a precaution appended to it.
 
 ---
 
 <div align="center">
 
-**Research in progress.** This describes a methodology that has cleared ethics
-review, not results, which do not yet exist.
+**Research in progress.** The present document describes a methodology that
+has received ethics approval. It does not report results, which are not yet
+available.
 
 </div>
