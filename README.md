@@ -15,8 +15,9 @@
 ![Source](https://img.shields.io/badge/source-private-6E8492?style=flat-square)
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-ML-EC6C27?style=flat-square)
+![BERT](https://img.shields.io/badge/BERT-embeddings-5C2D91?style=flat-square)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-MLP-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat-square&logo=openai&logoColor=white)
 ![Qualtrics](https://img.shields.io/badge/Qualtrics-API-00BF6F?style=flat-square)
 
 </div>
@@ -87,8 +88,8 @@ of the question:
 > the outcome?**
 
 The study accordingly examines the correlation between demographic variables,
-Big Five personality traits as measured by the NEO PI-R, trait self-control,
-and observed behaviour under controlled phishing simulation.
+Big Five personality traits, trait self-control, and observed behaviour under
+controlled phishing simulation.
 
 The implications are bidirectional, and they govern how the work is conducted.
 Should personality prove a reliable predictor of susceptibility, training that
@@ -141,60 +142,91 @@ measurement.
 
 ---
 
-## ⚙️ The three components
+## 🧩 Proof of concept
 
-Each component addresses a distinct element of the measurement problem.
+A platform was implemented that operationalises the combination of contextual
+and psychological profiling for phishing simulation. It collects publicly
+available information through open-source intelligence techniques, constructs
+a personality profile according to the Big Five model, and generates a
+spear-phishing email adapted to the target. The architecture comprises three
+interdependent modules.
 
 <br/>
 
-### 🧩 Personality assessment framework
+### 🔍 1. Open-source intelligence
 
-> **May a psychometric profile be obtained and scored reliably at the scale
-> required by the study?**
+> **Assemble the publicly available material associated with a target
+> identity.**
 
-The framework implements the complete lifecycle of a psychometric instrument:
-ingestion of survey responses, cleaning and validation, scoring, and
-generation of individual reports. Two instruments are currently implemented.
+The first stage of the pipeline gathers online material linked to a target
+identity: an email address, known pseudonyms, personal names, institutional
+domains, and published textual material such as opinions and activity on
+social networks. Sixteen distinct tools are incorporated, each categorised
+according to the type of identifier it accepts as input. The collected text is
+exported in tabular form for the subsequent stage.
 
-| Instrument | Measures |
+<br/>
+
+### 🧠 2. Personality analysis
+
+> **Convert the collected text into a Big Five profile.**
+
+The second module translates the textual data obtained in the preceding stage
+into a psychological profile based on the Big Five model, which decomposes
+personality into five measurable dimensions: openness to experience,
+conscientiousness, extraversion, agreeableness and neuroticism.
+
+Only sentences authored by the target are retained for linguistic analysis.
+These are converted into vector embeddings by means of a pre-trained BERT
+model, which captures the semantic features of the text. The embeddings are
+enriched with psycholinguistic features and supplied to a lightweight
+supervised model, a multilayer perceptron, trained to predict Big Five scores.
+Trait scores are assigned to each individual comment and subsequently
+aggregated into an overall profile, expressed as mean values between 0 and 1.
+
+The approach additionally draws on association rules established in prior
+work: language characterised by frequent expressions of positive emotion
+correlates with higher extraversion, for instance, whereas cautious or highly
+structured phrasing may indicate conscientiousness. In the current version,
+each of the five traits is treated as an explicit and interpretable signal
+that contributes directly to the instructions guiding message generation. The
+analysis is not intended as a clinical assessment, but as an indication of the
+target's disposition sufficient to inform adaptation.
+
+<br/>
+
+### ✉️ 3. Spear-phishing generation
+
+> **Produce a message adapted to both the psychological profile and the
+> context.**
+
+The final module combines the psychological profile produced by the preceding
+stage with the contextual information gathered during the open-source
+intelligence phase, such as current employment, institution of affiliation and
+identified interests, in order to generate a personalised message. The module
+proceeds from the hypothesis that the success of a spear-phishing attack
+depends substantially upon the personality of the recipient, and upon the
+capacity to adapt the tone, style and content of the message to their expected
+behaviour.
+
+| Elevated trait | Adaptation applied to the message |
 |---|---|
-| **NEO PI-R** (Costa & McCrae, 1992) | the Big Five across 30 facets |
-| **Self-Control Scale** (Tangney et al., 2004) | a 36-item trait measure |
+| **Openness** | emphasis upon novelty and innovation |
+| **Conscientiousness** | professional and well-structured tone |
+| **Extraversion** | socially engaging content, energetic tone, opportunity for interaction |
+| **Agreeableness** | empathetic and cooperative language, emphasising harmony and concern for others |
+| **Neuroticism** | conveyed urgency and the salience of potential risk |
 
-Participants receive their individual profile confidentially. Administration
-is independent of the behavioural phase.
+Trait scores and contextual information are translated into a clearly
+structured prompt containing explicit instructions for generation. The
+implementation integrates the OpenAI API but is deliberately model-agnostic,
+permitting deployment with alternative large language models.
 
-<br/>
-
-### 🔤 Personality inference from text
-
-> **May personality be inferred from written language alone?**
-
-A requirement for full psychometric assessment of every subject imposes a
-constraint that does not extend beyond the research setting, and to which an
-attacker is not subject. This module trains models to predict NEO PI-R facet
-scores directly from written language, in order to determine whether natural
-text carries sufficient signal to approximate a profile. The question is of
-independent research interest and additionally determines the realism of the
-broader threat model.
-
-A parallel line of enquiry examines whether self-regulation capacity may be
-predicted from personality facets alone, using NEO PI-R scores as features.
-
-<br/>
-
-### 🎯 OSINT-informed pretext generation
-
-> **Does a pretext adapted to the individual alter the outcome?**
-
-The behavioural phase requires a pretext credible to a specific recipient.
-This component combines a participant's personality profile with contextual
-information derived through open-source intelligence in order to generate a
-tailored simulation message. Safety constraints are embedded within the
-generation step itself: output is framed as training material and must contain
-no active links, no attachments and no request for sensitive data, with the
-consequence that a generated message remains a simulation irrespective of how
-the delivery platform is subsequently configured.
+Safety constraints are embedded within the generation step itself: output is
+framed as training material and must contain no active links, no attachments
+and no request for sensitive data, with the consequence that a generated
+message remains a simulation irrespective of how the delivery platform is
+subsequently configured.
 
 The **[prompt template](prompt_template.md)** is published here for purposes
 of reproducibility. It represents the element of the method that may be
@@ -221,9 +253,20 @@ outcome outside the research pipeline.
 | **Disclosure** | Generic study aims only | Deception disclosed upon conclusion of participation |
 | **Output** | Individual personality profile | One behavioural record per participant, per message |
 
-The simulation platform is configured to record that a submission occurred
-rather than its content, yielding a measure of susceptibility without the
-study retaining participant credentials at any stage.
+Phase 1 establishes a measured personality profile against which inferred
+profiles and observed behaviour may be compared. Two validated instruments are
+administered.
+
+| Instrument | Measures |
+|---|---|
+| **NEO PI-R** (Costa & McCrae, 1992) | the Big Five across 30 facets |
+| **Self-Control Scale** (Tangney et al., 2004) | a 36-item trait measure |
+
+Participants receive their individual profile confidentially, and
+administration is independent of the behavioural phase. The simulation
+platform is configured to record that a submission occurred rather than its
+content, yielding a measure of susceptibility without the study retaining
+participant credentials at any stage.
 
 > **Ethics.** A favourable assessment was obtained from the university ethics
 > committee prior to any data collection. Consent is obtained once, in
