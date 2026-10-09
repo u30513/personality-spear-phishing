@@ -196,12 +196,3 @@ publicly available information into a persuasive targeted pretext, and open
 distribution would place that capability in general circulation. Participant
 data from Phase 2 is not shareable in any form, independently of the status of
 the code.
-
----
-
-<div align="center">
-
-**Research in progress.** Methodology approved by ethics review; no results
-are reported.
-
-</div>
