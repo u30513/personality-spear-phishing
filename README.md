@@ -188,10 +188,3 @@ holding participant credentials.
 
 **The implementation is available upon request**, for research, peer review
 and replication. Requests may be directed to the repository owner.
-
-It is not published openly because the apparatus surrounding the prompt
-constitutes an operational method for converting a personality profile and
-publicly available information into a persuasive targeted pretext, and open
-distribution would place that capability in general circulation. Participant
-data from Phase 2 is not shareable in any form, independently of the status of
-the code.
