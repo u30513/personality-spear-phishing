@@ -141,41 +141,6 @@ measurement.
 
 ---
 
-## 🔬 The pipeline
-
-```mermaid
-flowchart LR
-  subgraph PH1["PHASE 1 - Self-report"]
-    A["NEO PI-R<br/>Big Five, 30 facets"]
-    B["Self-Control Scale<br/>36 items"]
-  end
-
-  subgraph GEN["Generation - not published"]
-    O["OSINT context"]
-    T["Prompt template<br/>safety-constrained"]
-  end
-
-  subgraph PH2["PHASE 2 - Behavioural"]
-    S["Simulation platform"]
-    R["Behavioural record<br/>submission: yes / no"]
-  end
-
-  A --> P["Personality profile"]
-  B --> P
-  P --> T
-  O --> T
-  T --> M["Personalised message"]
-  M --> S
-  S --> R
-  P --> AN["Analysis<br/>traits vs. susceptibility"]
-  R --> AN
-```
-
-The two phases intersect only at the analysis stage. This separation is a
-deliberate property of the design.
-
----
-
 ## ⚙️ The three components
 
 Each component addresses a distinct element of the measurement problem.
