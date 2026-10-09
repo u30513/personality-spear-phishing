@@ -9,7 +9,6 @@
 
 <br/>
 
-![Ethics](https://img.shields.io/badge/ethics-committee%20approved-3F7D20?style=flat-square)
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
 ![BERT](https://img.shields.io/badge/BERT-embeddings-5C2D91?style=flat-square)
@@ -24,7 +23,7 @@
 > Public documentation of the project. The code is
 > [available upon request](#-availability).
 
-## 📌 The problem
+## 📌 The gap
 
 Phishing remains among the most prevalent and effective forms of cybercrime,
 with worldwide annual losses estimated in the trillions of dollars. Beyond
