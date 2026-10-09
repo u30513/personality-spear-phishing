@@ -12,7 +12,7 @@
 
 ![Status](https://img.shields.io/badge/status-research%20in%20progress-2E7D86?style=flat-square)
 ![Ethics](https://img.shields.io/badge/ethics-committee%20approved-3F7D20?style=flat-square)
-![Source](https://img.shields.io/badge/source-private-6E8492?style=flat-square)
+![Implementation](https://img.shields.io/badge/implementation-available%20on%20request-6E8492?style=flat-square)
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
 ![BERT](https://img.shields.io/badge/BERT-embeddings-5C2D91?style=flat-square)
@@ -30,8 +30,8 @@ instrumentation required to examine that question under controlled conditions,
 such that any resulting finding may be translated into defensive practice.
 
 > This repository constitutes the public documentation of the project. The
-> implementation is not publicly available; see
-> [Why the source is private](#-why-the-source-is-private).
+> implementation is not published openly, but is
+> [available upon request](#-availability-of-the-implementation).
 
 ---
 
@@ -95,8 +95,8 @@ The implications are bidirectional, and they govern how the work is conducted.
 Should personality prove a reliable predictor of susceptibility, training that
 disregards it allocates equivalent effort to recipients of markedly unequal
 exposure. The same personalisation that would render such training effective
-would, however, equally render an attack effective. The generative component
-of this project is restricted accordingly.
+would, however, equally render an attack effective. Access to the generative
+component is controlled accordingly.
 
 ---
 
@@ -228,13 +228,11 @@ and no request for sensitive data, with the consequence that a generated
 message remains a simulation irrespective of how the delivery platform is
 subsequently configured.
 
-The **[prompt template](prompt_template.md)** is published here for purposes
-of reproducibility. It represents the element of the method that may be
-examined and evaluated without distribution of an operational capability,
+The **[prompt template](prompt_template.md)** is reproduced here in full,
 specifying what is requested of the model and the constraints within which the
-request is bounded. The surrounding apparatus is not published: open-source
-intelligence collection, the binding of profile to prompt, and campaign
-orchestration.
+request is bounded. The surrounding apparatus, namely open-source intelligence
+collection, the binding of profile to prompt and campaign orchestration, is
+not published openly but is available upon request.
 
 ➡️ **[Read the prompt template](prompt_template.md)**
 
@@ -278,20 +276,23 @@ participant credentials at any stage.
 
 ---
 
-## 🔒 Why the source is private
+## 🔒 Availability of the implementation
+
+**The implementation is available upon request**, for purposes of research,
+peer review and replication. Requests may be directed to the repository owner.
+
+It is not published openly for the following reasons:
 
 - The apparatus surrounding the prompt constitutes, by construction, an
   operational method for converting a personality profile and publicly
-  available information into a persuasive targeted pretext. The prompt design
-  is published so that the method may be subject to review; the automated
-  collection and orchestration that render it operational are not, the
-  distinction between documenting a method and distributing it being material.
+  available information into a persuasive targeted pretext. Open distribution
+  would place that capability in general circulation, whereas controlled
+  access permits the method to be examined, reviewed and replicated without
+  that consequence.
 - Phase 2 records behaviour under a deception to which participants did not
-  consent in advance. No derivative of that data may be made public,
-  irrespective of consent obtained subsequently.
-- Maintaining separation between the data and tooling of the two phases,
-  including from public view, forms part of the validity argument rather than
-  a precaution appended to it.
+  consent in advance. Participant data is accordingly not shareable in any
+  form, irrespective of consent obtained subsequently and independently of
+  the status of the code.
 
 ---
 
