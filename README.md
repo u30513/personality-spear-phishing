@@ -34,13 +34,44 @@ as intuition.
 
 ## 📌 The problem
 
-Security awareness training generally treats phishing susceptibility as
-uniform: train everyone the same way, measure the aggregate click rate,
-repeat. That does not match how social engineering actually works. An attacker
-writing a pretext by hand instinctively tunes it to the target: their role,
-their interests, what they are likely to feel urgency about. The defensive
-side has largely not modelled that asymmetry, because doing so requires
-measuring something awkward: the person, not the payload.
+Phishing remains among the most prevalent and reliably successful categories
+of cybercrime, reaching private individuals, companies and public institutions
+without distinction. Worldwide annual losses are estimated in the trillions of
+dollars, and the harm extends well past the balance sheet: stolen proprietary
+work, exposure of records that were meant to stay confidential, interrupted
+operations, and the slow erosion of institutional credibility that follows a
+publicised breach.
+
+What has changed is precision. Indiscriminate bulk mailings have given way to
+messages composed for one recipient, or for a narrowly drawn group. Their
+potency comes from context. Using open-source intelligence, an attacker
+assembles a picture of a target from material that is freely available, then
+writes an approach that fits what that person values, worries about, or
+happens to be dealing with that week. The message does not have to be
+universally plausible. It only has to be plausible to one reader.
+
+Generative AI has sharpened this considerably. Models now produce fluent,
+situationally aware prose on demand, stripping away the awkward phrasing and
+visible errors that users were taught to treat as warning signs. Tailoring
+that previously cost an attacker real effort per target can be produced
+automatically and in volume, lifting both the reach and the hit rate of a
+campaign while defences remain calibrated against an earlier, cruder form of
+the attack.
+
+Those defences are not holding. Recent evaluations of awareness and training
+programmes report limited effect, and the reason is structural rather than
+incidental: such programmes issue the same general guidance to everyone and
+treat each recipient as interchangeable, leaving untouched the human
+characteristics that determine why one person acts on a message and the next
+deletes it. The distance between how precisely attacks are now aimed and how
+uniformly countermeasures are delivered is among the weakest points in
+current security education.
+
+Personality is one of those characteristics, and its association with
+susceptibility is established in the literature set out below. Yet almost no
+working system carries personality into the construction of the simulations
+used for training. The dimension the research identifies as relevant is
+precisely the one practical tools leave out.
 
 This project asks a sharper, testable version of the question:
 
@@ -52,12 +83,12 @@ Specifically, it studies the correlation between demographic variables,
 Big Five personality traits (NEO PI-R), trait self-control, and observed
 behaviour under a controlled phishing simulation.
 
-If personality is a measurable factor in susceptibility, two consequences
-follow. Generic, undifferentiated awareness training is leaving a known
-variable unused: the same budget could be spent on the people and traits most
-exposed. And the same personalisation that predicts susceptibility could be
-used to build more convincing attacks, which is precisely why the generation
-side of this work is held closely rather than published.
+The answer cuts both ways, which shapes how the work is handled. If
+personality measurably predicts susceptibility, training that ignores it is
+spending the same effort on everyone regardless of exposure. But the
+personalisation that makes such training effective is the same
+personalisation that makes an attack effective, which is why the generation
+side of this project is held closely rather than published.
 
 ---
 
