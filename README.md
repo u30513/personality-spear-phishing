@@ -10,7 +10,6 @@
 ![BERT](https://img.shields.io/badge/BERT-embeddings-5C2D91?style=flat-square)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-MLP-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat-square&logo=openai&logoColor=white)
-![Qualtrics](https://img.shields.io/badge/Qualtrics-API-00BF6F?style=flat-square)
 
 </div>
 
@@ -49,11 +48,9 @@ simulations used for training.
 > spear-phishing attempt, and does adapting the pretext to that profile alter
 > the outcome?**
 
-The study examines the correlation between demographic variables, Big Five
-personality traits, trait self-control and observed behaviour under controlled
-simulation. The same personalisation that would make such training effective
-would equally serve an attack, and access to the generative component is
-controlled accordingly.
+The same personalisation that would make such training effective would
+equally serve an attack, and access to the generative component is controlled
+accordingly.
 
 ---
 
@@ -174,29 +171,6 @@ message remains a simulation regardless of how the delivery platform is
 configured.
 
 ➡️ **[Read the prompt template](prompt_template.md)**
-
----
-
-## 🧪 Experiment procedure
-
-The experiment contrasts two conditions: pretexts assembled from contextual
-information alone, and pretexts additionally informed by an inferred
-personality profile. Participants were told at the outset that they would
-receive simulated messages in the course of a study on phishing awareness,
-and each supplied an email address voluntarily. That address, of the form
-`given.family@institution.edu`, is the only input the pipeline requires.
-
-| Stage | Operation | Output |
-|---|---|---|
-| **1. Identity resolution** | The system splits the address into a given name, a family name and an institutional domain | The identifiers worth searching on, and the searches each one justifies |
-| **2. Collection** | Each identifier is passed to the tools that accept it: username searches across platforms, the LinkedIn scraper, a public portfolio | The accounts and text the person has left publicly visible |
-| **3. Filtering** | Anything unusable is removed: passages that repeat, words quoted from other people, and material that turns out to concern someone else | One structured file holding the accounts, addresses and text that remain |
-| **4. Contextual summary** | What remains is condensed into a short description of what can be observed about the person in public | The factual basis on which the pretext is built |
-| **5. Personality inference** | The personality module reads only the sentences the participant wrote, and scores them | Big Five scores, in the personality condition only |
-| **6. Generation** | The generator writes the message from that summary, adding the personality signals where the condition calls for them | The finished pretext, embedded in the email the participant receives |
-
-Only stage 5 distinguishes the two conditions; the remainder is common to
-both.
 
 ---
 
