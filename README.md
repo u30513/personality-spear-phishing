@@ -188,12 +188,12 @@ and each supplied an email address voluntarily. That address, of the form
 
 | Stage | Operation | Output |
 |---|---|---|
-| **1. Identity resolution** | Given name separated from family name; institutional domain identified | Candidate identifiers and the collection actions they warrant |
-| **2. Collection** | Targeted queries and scrapers applied to those identifiers: usernames across platforms, LinkedIn, public portfolios | Publicly accessible accounts and text |
-| **3. Filtering** | Duplicated passages, text quoted from other authors and references unrelated to the individual are discarded | Structured file of accounts, addresses and text fragments |
-| **4. Contextual summary** | Retained traces condensed into publicly observable attributes | The basis of the pretext |
-| **5. Personality inference** | Sentences attributable to the participant analysed by the personality module | Big Five scores, in the personality condition only |
-| **6. Generation** | Composition from the contextual summary and, where applicable, the personality signals | Pretext embedded in the message delivered |
+| **1. Identity resolution** | The system splits the address into a given name, a family name and an institutional domain | The identifiers worth searching on, and the searches each one justifies |
+| **2. Collection** | Each identifier is passed to the tools that accept it: username searches across platforms, the LinkedIn scraper, a public portfolio | The accounts and text the person has left publicly visible |
+| **3. Filtering** | Anything unusable is removed: passages that repeat, words quoted from other people, and material that turns out to concern someone else | One structured file holding the accounts, addresses and text that remain |
+| **4. Contextual summary** | What remains is condensed into a short description of what can be observed about the person in public | The factual basis on which the pretext is built |
+| **5. Personality inference** | The personality module reads only the sentences the participant wrote, and scores them | Big Five scores, in the personality condition only |
+| **6. Generation** | The generator writes the message from that summary, adding the personality signals where the condition calls for them | The finished pretext, embedded in the email the participant receives |
 
 Only stage 5 distinguishes the two conditions; the remainder is common to
 both.
