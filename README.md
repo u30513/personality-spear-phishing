@@ -4,11 +4,7 @@
 
 **Using OSINT and Generative AI**
 
-*Does personality predict susceptibility to personalised phishing,*
-*and does adapting the attack to the individual alter the outcome?*
-
 <br/>
-
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
 ![BERT](https://img.shields.io/badge/BERT-embeddings-5C2D91?style=flat-square)
@@ -23,7 +19,7 @@
 > Public documentation of the project. The code is
 > [available upon request](#-availability).
 
-## 📌 The gap
+## 📌 Introduction
 
 Phishing remains among the most prevalent and effective forms of cybercrime,
 with worldwide annual losses estimated in the trillions of dollars. Beyond
@@ -111,6 +107,32 @@ pseudonyms, personal names, institutional domains. Collected text, including
 opinions and activity on social networks, is exported in tabular form for the
 next stage.
 
+**Established tools**
+
+| Tool | Input | Function |
+|---|---|---|
+| **BlackBird** | email | Username and address searches across more than 600 platforms, with automated profiling. |
+| **GHunt** | email | Recovers material associated with a Google account, including calendar entries and contributions to Maps. |
+| **Holehe** | email | Establishes whether an address is registered with more than 120 services. |
+| **Maigret** | username | Compiles a dossier from a username alone, querying a large number of sites and collecting what each exposes. |
+| **Sherlock** | username | Locates accounts matching a username across more than 400 networks. |
+| **Socialscan** | email / username | Determines whether an address or username is in use on online platforms. |
+
+**Scrapers developed for the project**
+
+| Scraper | Input | Function |
+|---|---|---|
+| **GitHub** | username | Retrieves a user's public activity together with the associated statistics. |
+| **Google deep search** | query | Takes the first ten results for a query and extracts the content of each. |
+| **Google search** | query | Returns the first ten sites matching a query. |
+| **Google Maps reviews** | review URL | Complements GHunt by collecting reviews left on Maps. |
+| **Instagram** | username | Collects the biography declared on a profile. |
+| **LinkedIn** | profile URL | Retrieves biography, posts, positions held and associated links. |
+| **Portfolio** | URL | Extracts information from a personal portfolio site. |
+| **Reddit** | username | Collects biography, links and posts. |
+| **TikTok** | username | Retrieves the biography and a subset of posts. |
+| **Twitter** | username | Retrieves a user's posts, biography and links. |
+
 ### 🧠 2. Personality analysis
 
 > **Convert the collected text into a Big Five profile.**
@@ -155,32 +177,40 @@ configured.
 
 ---
 
-## 🧪 Study design
+## 🧪 Experiment procedure
 
-Two independent phases, structured so that no single dataset associates a
-personality profile with a phishing outcome outside the research pipeline.
+The experiment contrasts two conditions: pretexts assembled from contextual
+information alone, and pretexts additionally informed by an inferred
+personality profile.
 
-| | Phase 1 - self-report | Phase 2 - behavioural |
-|---|---|---|
-| **Instrument** | NEO PI-R and self-control measure | Personalised phishing simulation |
-| **Delivery** | Online questionnaire | Phishing-simulation platform |
-| **Disclosure** | Generic study aims only | Deception disclosed upon conclusion |
-| **Output** | Individual personality profile | One behavioural record per participant, per message |
+Participants were first shown an instructions screen stating that they would
+receive simulated messages in the course of a study on phishing awareness.
+Each then supplied an email address voluntarily. That address served as the
+initial identifier for the intelligence stage and as the starting point for
+assembling the public context from which the pretexts were subsequently built.
 
-Phase 1 establishes a measured profile against which inferred profiles and
-observed behaviour are compared, using the NEO PI-R (Costa & McCrae, 1992),
-covering the Big Five across 30 facets, and the Self-Control Scale (Tangney et
-al., 2004), a 36-item trait measure. Participants receive their profile
-confidentially. The simulation platform records that a submission occurred
-rather than its content, yielding a susceptibility measure without the study
-holding participant credentials.
+The sequence may be illustrated with an address of the form
+`given.family@institution.edu`. The intelligence module separates given name
+from family name and identifies the institutional domain. From those elements
+it issues targeted queries and proposes the collection actions that the
+identifiers warrant: searching for matching usernames across platforms,
+invoking the LinkedIn scraper, or examining a public portfolio. Text that is
+publicly accessible on the profiles so identified is then retrieved.
 
-> **Ethics.** Favourable assessment from the university ethics committee
-> preceded data collection. Consent is obtained once, in advance, covering
-> both phases; all collection is telematic. Advance disclosure of the phishing
-> component would have invalidated the measurement, and post-participation
-> debriefing is therefore the mechanism by which the design remains both valid
-> and ethical.
+The material gathered is filtered before use, discarding duplicated passages,
+text quoted from other authors, and references bearing no relation to the
+individual. What survives is written to a structured file aggregating the
+traces recovered: accounts, addresses and fragments of text.
+
+Two operations follow. In both conditions, the aggregated output is reduced to
+a contextual summary of publicly observable attributes, which furnishes the
+basis of the pretext. In the personality condition alone, sentences
+attributable to the participant are additionally retained for linguistic
+analysis and passed to the personality module, which assigns Big Five scores
+and directs generation accordingly. The generation module then composes the
+pretext from the contextual summary and, where the condition requires it, the
+personality signals; the resulting text is embedded in the message delivered
+to the participant.
 
 ---
 
