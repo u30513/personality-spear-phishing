@@ -181,36 +181,22 @@ configured.
 
 The experiment contrasts two conditions: pretexts assembled from contextual
 information alone, and pretexts additionally informed by an inferred
-personality profile.
+personality profile. Participants were told at the outset that they would
+receive simulated messages in the course of a study on phishing awareness,
+and each supplied an email address voluntarily. That address, of the form
+`given.family@institution.edu`, is the only input the pipeline requires.
 
-Participants were first shown an instructions screen stating that they would
-receive simulated messages in the course of a study on phishing awareness.
-Each then supplied an email address voluntarily. That address served as the
-initial identifier for the intelligence stage and as the starting point for
-assembling the public context from which the pretexts were subsequently built.
+| Stage | Operation | Output |
+|---|---|---|
+| **1. Identity resolution** | Given name separated from family name; institutional domain identified | Candidate identifiers and the collection actions they warrant |
+| **2. Collection** | Targeted queries and scrapers applied to those identifiers: usernames across platforms, LinkedIn, public portfolios | Publicly accessible accounts and text |
+| **3. Filtering** | Duplicated passages, text quoted from other authors and references unrelated to the individual are discarded | Structured file of accounts, addresses and text fragments |
+| **4. Contextual summary** | Retained traces condensed into publicly observable attributes | The basis of the pretext |
+| **5. Personality inference** | Sentences attributable to the participant analysed by the personality module | Big Five scores, in the personality condition only |
+| **6. Generation** | Composition from the contextual summary and, where applicable, the personality signals | Pretext embedded in the message delivered |
 
-The sequence may be illustrated with an address of the form
-`given.family@institution.edu`. The intelligence module separates given name
-from family name and identifies the institutional domain. From those elements
-it issues targeted queries and proposes the collection actions that the
-identifiers warrant: searching for matching usernames across platforms,
-invoking the LinkedIn scraper, or examining a public portfolio. Text that is
-publicly accessible on the profiles so identified is then retrieved.
-
-The material gathered is filtered before use, discarding duplicated passages,
-text quoted from other authors, and references bearing no relation to the
-individual. What survives is written to a structured file aggregating the
-traces recovered: accounts, addresses and fragments of text.
-
-Two operations follow. In both conditions, the aggregated output is reduced to
-a contextual summary of publicly observable attributes, which furnishes the
-basis of the pretext. In the personality condition alone, sentences
-attributable to the participant are additionally retained for linguistic
-analysis and passed to the personality module, which assigns Big Five scores
-and directs generation accordingly. The generation module then composes the
-pretext from the contextual summary and, where the condition requires it, the
-personality signals; the resulting text is embedded in the message delivered
-to the participant.
+Only stage 5 distinguishes the two conditions; the remainder is common to
+both.
 
 ---
 
